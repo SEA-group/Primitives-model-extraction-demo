@@ -1,0 +1,90 @@
+unknown:4
+sectionData[
+	{
+		data(Vertices){
+			type:64									# string
+			count:4									# uint32
+			BPVT:{									
+				subType:64							# string
+				count:4								# uint32
+			}
+			vertices[
+				{
+					xyz:12							# float *3
+					xyznuv{							### alpha model, i.e. glass, plane propeller, net
+						normal:4					# float *3 (needs conversion)
+						uv:8						# float *2
+						unknown:8
+					}
+					xyznuvtb{						### standard model 
+						normal:4					# float *3 (needs conversion)
+						uv:8						# float *2
+						tangent:4					# float
+						binormal:4					# float
+					}
+					xyznuvr{						### wire model
+						normal:12					# float *3
+						u:4							# float
+						v:4							# float
+						r:4							# float
+					}
+					xyznuviiiwwtb{					### skinned model, i.e. main turret
+						normal:4					# float *3 (needs conversion)
+						uv:8						# float *2
+                 		iiiww:5						# part indentifier, hex -> string as entity name
+						tangent:4					# float
+						binormal:4					# float
+					}
+				}
+			]
+		}:sectionSize
+		data(Indices){
+			type:64									# string
+			count:4									# uint32
+			groupCount:4							# uint32
+			indices[
+				list{								# exists only when type==list
+					i3:2							# uint16
+					i2:2							# uint16
+					i1:2							# uint16
+				}
+				list32{								# exists only when type==list32
+					i3:4							# uint32
+					i2:4							# uint32
+					i1:4							# uint32
+				}
+			]
+			groups[
+				{
+					startIndex:4					# uint32
+					trianglesCount:4				# uint32
+					startVertex:4					# uint32
+					verticesCount:4					# uint32
+				}
+			]
+		}:sectionSize
+		data(armor){
+			unknown:28
+			count:4									# uint32
+			armor[
+				id:4								# uint32								
+				unknown:24
+				count:4								# uint32
+				vertices[
+				{
+					xyz:12							# float *3
+					unknown:4						# the value doesn't seem like normal, I don't know what it is.
+				}
+			]
+		}:sectionSize
+	}
+]:sum(sectionSize)
+sectionNames[
+	{
+		sectionSize:4								# uint32
+		unknown(0):16								
+		sectionNameLength:4							# uint32
+		sectionName:sectionNameLength				# string
+	}
+]:sectionNameLength
+sectionNameLength:4									# uint32
