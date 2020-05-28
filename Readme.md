@@ -21,7 +21,7 @@ Tested in Matlab r2018b
 ## 使用说明
 1. 在同目录下创建Queue文件夹
 2. 把要拆的primitives全放进去
-3. 用matlab打开PrimitivesExtractor_Mk4.m，运行
+3. 用Matlab打开`PrimitivesExtractor_Mk5.m`，运行
 4. 拆出来的obj会出现在Extract目录下
 
 已在Matlab r2018b中测试
