@@ -12,9 +12,9 @@ sectionData[
 				{
 					xyz:12							# float *3
 					xyznuv{							### alpha model, i.e. glass, plane propeller, net
-						normal:4					# float *3 (needs conversion)
-						uv:8						# float *2
-						unknown:8
+						normal:12					# float *3
+						u:4							# float
+						v:4							# float
 					}
 					xyznuvtb{						### standard model 
 						normal:4					# float *3 (needs conversion)

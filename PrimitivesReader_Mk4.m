@@ -1,12 +1,12 @@
-% version 2020.05.20.b
+% version 2020.06.04.a
 % requires NormalConvertor_Mk2.m
-% 
-function sectionNameUltimate=PrimitivesReader_Mk3(fileName)
+
+function sectionNameUltimate=PrimitivesReader_Mk4(fileName)
     
 %     %% debug attributes bloc
 %     clc
 %     clear
-%     fileName= 'Queue/JSD019_Fubuki_1943_MidBack_lod2.primitives';
+%     fileName= 'Queue/AAS010_Curtiss_SC1.primitives';
     
     %% open file and read in bytes
 
@@ -302,17 +302,15 @@ function sectionNameUltimate=PrimitivesReader_Mk3(fileName)
                     data_vertices_mat(indVert,2)=typecast(uint8([primCode(cursor+68+(indVert-1)*32+4), primCode(cursor+68+(indVert-1)*32+5), primCode(cursor+68+(indVert-1)*32+6), primCode(cursor+68+(indVert-1)*32+7)]), 'single');
                     % z
                     data_vertices_mat(indVert,3)=typecast(uint8([primCode(cursor+68+(indVert-1)*32+8), primCode(cursor+68+(indVert-1)*32+9), primCode(cursor+68+(indVert-1)*32+10), primCode(cursor+68+(indVert-1)*32+11)]), 'single');
-                    % normal, an unsigned integer. will be ensuite converted to 3 floats
-                    normalNum=primCode(cursor+68+(indVert-1)*32+12)+primCode(cursor+68+(indVert-1)*32+13)*256+primCode(cursor+68+(indVert-1)*32+14)*256^2+primCode(cursor+68+(indVert-1)*32+15)*256^3;
-                    normal3=NormalConvertor_Mk2(normalNum);
-                    data_vertices_mat(indVert,4)=normal3(1);
-                    data_vertices_mat(indVert,5)=normal3(2);
-                    data_vertices_mat(indVert,6)=normal3(3);
+                    % normal                    
+                    data_vertices_mat(indVert,4)=typecast(uint8([primCode(cursor+68+(indVert-1)*32+12), primCode(cursor+68+(indVert-1)*32+13), primCode(cursor+68+(indVert-1)*32+14), primCode(cursor+68+(indVert-1)*32+15)]), 'single');
+                    data_vertices_mat(indVert,5)=typecast(uint8([primCode(cursor+68+(indVert-1)*32+16), primCode(cursor+68+(indVert-1)*32+17), primCode(cursor+68+(indVert-1)*32+18), primCode(cursor+68+(indVert-1)*32+19)]), 'single');
+                    data_vertices_mat(indVert,6)=typecast(uint8([primCode(cursor+68+(indVert-1)*32+20), primCode(cursor+68+(indVert-1)*32+21), primCode(cursor+68+(indVert-1)*32+22), primCode(cursor+68+(indVert-1)*32+23)]), 'single');
                     % u
-                    data_vertices_mat(indVert,7)=typecast(uint8([primCode(cursor+68+(indVert-1)*32+16), primCode(cursor+68+(indVert-1)*32+17), primCode(cursor+68+(indVert-1)*32+18), primCode(cursor+68+(indVert-1)*32+19)]), 'single');
+                    data_vertices_mat(indVert,7)=typecast(uint8([primCode(cursor+68+(indVert-1)*32+24), primCode(cursor+68+(indVert-1)*32+25), primCode(cursor+68+(indVert-1)*32+26), primCode(cursor+68+(indVert-1)*32+27)]), 'single');
                     % v
-                    data_vertices_mat(indVert,8)=typecast(uint8([primCode(cursor+68+(indVert-1)*32+20), primCode(cursor+68+(indVert-1)*32+21), primCode(cursor+68+(indVert-1)*32+22), primCode(cursor+68+(indVert-1)*32+23)]), 'single');
-
+                    data_vertices_mat(indVert,8)=typecast(uint8([primCode(cursor+68+(indVert-1)*32+28), primCode(cursor+68+(indVert-1)*32+29), primCode(cursor+68+(indVert-1)*32+30), primCode(cursor+68+(indVert-1)*32+31)]), 'single');
+                    
                 end
 
                 save(['temps/', num2str(indSect), '_vertices_xyznnnuv.mat'], 'data_vertices_mat');

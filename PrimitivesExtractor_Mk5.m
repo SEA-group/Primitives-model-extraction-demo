@@ -1,5 +1,5 @@
 % An experimental primitives model extractor, prototype
-% version 2020.05.20.a
+% version 2020.06.04.a
 % requires PrimitivesReader_Mk4.m
 
 tic
