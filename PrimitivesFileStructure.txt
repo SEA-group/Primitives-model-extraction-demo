@@ -13,8 +13,8 @@ sectionData[
 					xyz:12							# float *3
 					xyznuv{							### alpha model, i.e. glass, plane propeller, net
 						normal:12					# float *3
-						u:4							# float
-						v:4							# float
+						u:4						# float
+						v:4						# float
 					}
 					xyznuvtb{						### standard model 
 						normal:4					# float *3 (needs conversion)
@@ -24,11 +24,11 @@ sectionData[
 					}
 					xyznuvr{						### wire model
 						normal:12					# float *3
-						u:4							# float
-						v:4							# float
-						r:4							# float
+						u:4						# float
+						v:4						# float
+						r:4						# float
 					}
-					xyznuviiiwwtb{					### skinned model, i.e. main turret
+					xyznuviiiwwtb{						### skinned model, i.e. main turret
 						normal:4					# float *3 (needs conversion)
 						uv:8						# float *2
 						iiiww:5						# part indentifier, hex -> string as entity name
@@ -41,7 +41,7 @@ sectionData[
 		data(Indices){
 			type:64									# string
 			count:4									# uint32
-			groupCount:4							# uint32
+			groupCount:4								# uint32
 			indices[
 				list{								# exists only when type==list
 					i3:2							# uint16
@@ -56,10 +56,10 @@ sectionData[
 			]
 			groups[
 				{
-					startIndex:4					# uint32
-					trianglesCount:4				# uint32
-					startVertex:4					# uint32
-					verticesCount:4					# uint32
+					startIndex:4						# uint32
+					trianglesCount:4					# uint32
+					startVertex:4						# uint32
+					verticesCount:4						# uint32
 				}
 			]
 		}:sectionSize
@@ -73,7 +73,7 @@ sectionData[
 				vertices[
 				{
 					xyz:12							# float *3
-					unknown:4						# the value doesn't seem like normal, I don't know what it is.
+					unknown:4
 				}
 			]
 		}:sectionSize
@@ -81,10 +81,10 @@ sectionData[
 ]:sum(sectionSize)
 sectionNames[
 	{
-		sectionSize:4								# uint32
+		sectionSize:4									# uint32
 		unknown(0):16								
-		sectionNameLength:4							# uint32
-		sectionName:sectionNameLength				# string
+		sectionNameLength:4								# uint32
+		sectionName:sectionNameLength							# string
 	}
 ]:sectionNameLength
-sectionNameLength:4									# uint32
+sectionNameLength:4										# uint32
