@@ -31,7 +31,7 @@ sectionData[
 					xyznuviiiwwtb{					### skinned model, i.e. main turret
 						normal:4					# float *3 (needs conversion)
 						uv:8						# float *2
-                 		iiiww:5						# part indentifier, hex -> string as entity name
+						iiiww:5						# part indentifier, hex -> string as entity name
 						tangent:4					# float
 						binormal:4					# float
 					}
