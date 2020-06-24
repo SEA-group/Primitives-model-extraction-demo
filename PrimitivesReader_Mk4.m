@@ -1,4 +1,4 @@
-% version 2020.06.04.a
+% version 2020.06.24.a
 % requires NormalConvertor_Mk2.m
 
 function sectionNameUltimate=PrimitivesReader_Mk4(fileName)
@@ -220,7 +220,7 @@ function sectionNameUltimate=PrimitivesReader_Mk4(fileName)
                     % u
                     data_vertices_mat(indVert,7)=typecast(uint8([primCode(cursor+68+(indVert-1)*32+16), primCode(cursor+68+(indVert-1)*32+17), primCode(cursor+68+(indVert-1)*32+18), primCode(cursor+68+(indVert-1)*32+19)]), 'single');
                     % v
-                    data_vertices_mat(indVert,8)=typecast(uint8([primCode(cursor+68+(indVert-1)*32+20), primCode(cursor+68+(indVert-1)*32+21), primCode(cursor+68+(indVert-1)*32+22), primCode(cursor+68+(indVert-1)*32+23)]), 'single');
+                    data_vertices_mat(indVert,8)=1-typecast(uint8([primCode(cursor+68+(indVert-1)*32+20), primCode(cursor+68+(indVert-1)*32+21), primCode(cursor+68+(indVert-1)*32+22), primCode(cursor+68+(indVert-1)*32+23)]), 'single');
                     % tangent
                     data_vertices_mat(indVert,9)=typecast(uint8([primCode(cursor+68+(indVert-1)*32+24), primCode(cursor+68+(indVert-1)*32+25), primCode(cursor+68+(indVert-1)*32+26), primCode(cursor+68+(indVert-1)*32+27)]), 'single');
                     % binormal
@@ -249,7 +249,7 @@ function sectionNameUltimate=PrimitivesReader_Mk4(fileName)
                     % u
                     data_vertices_mat(indVert,7)=typecast(uint8([primCode(cursor+68+(indVert-1)*36+24), primCode(cursor+68+(indVert-1)*36+25), primCode(cursor+68+(indVert-1)*36+26), primCode(cursor+68+(indVert-1)*36+27)]), 'single');
                     % v
-                    data_vertices_mat(indVert,8)=typecast(uint8([primCode(cursor+68+(indVert-1)*36+28), primCode(cursor+68+(indVert-1)*36+29), primCode(cursor+68+(indVert-1)*36+30), primCode(cursor+68+(indVert-1)*36+31)]), 'single');
+                    data_vertices_mat(indVert,8)=1-typecast(uint8([primCode(cursor+68+(indVert-1)*36+28), primCode(cursor+68+(indVert-1)*36+29), primCode(cursor+68+(indVert-1)*36+30), primCode(cursor+68+(indVert-1)*36+31)]), 'single');
                     % r
                     data_vertices_mat(indVert,9)=typecast(uint8([primCode(cursor+68+(indVert-1)*36+32), primCode(cursor+68+(indVert-1)*36+33), primCode(cursor+68+(indVert-1)*36+34), primCode(cursor+68+(indVert-1)*36+35)]), 'single');
 
@@ -276,7 +276,7 @@ function sectionNameUltimate=PrimitivesReader_Mk4(fileName)
                     % u
                     data_vertices_mat(indVert,7)=typecast(uint8([primCode(cursor+68+(indVert-1)*37+16), primCode(cursor+68+(indVert-1)*37+17), primCode(cursor+68+(indVert-1)*37+18), primCode(cursor+68+(indVert-1)*37+19)]), 'single');
                     % v
-                    data_vertices_mat(indVert,8)=typecast(uint8([primCode(cursor+68+(indVert-1)*37+20), primCode(cursor+68+(indVert-1)*37+21), primCode(cursor+68+(indVert-1)*37+22), primCode(cursor+68+(indVert-1)*37+23)]), 'single');
+                    data_vertices_mat(indVert,8)=1-typecast(uint8([primCode(cursor+68+(indVert-1)*37+20), primCode(cursor+68+(indVert-1)*37+21), primCode(cursor+68+(indVert-1)*37+22), primCode(cursor+68+(indVert-1)*37+23)]), 'single');
                     % tangent
                     data_vertices_mat(indVert,9)=typecast(uint8([primCode(cursor+68+(indVert-1)*37+29), primCode(cursor+68+(indVert-1)*37+30), primCode(cursor+68+(indVert-1)*37+31), primCode(cursor+68+(indVert-1)*37+32)]), 'single');
                     % binormal
@@ -309,7 +309,7 @@ function sectionNameUltimate=PrimitivesReader_Mk4(fileName)
                     % u
                     data_vertices_mat(indVert,7)=typecast(uint8([primCode(cursor+68+(indVert-1)*32+24), primCode(cursor+68+(indVert-1)*32+25), primCode(cursor+68+(indVert-1)*32+26), primCode(cursor+68+(indVert-1)*32+27)]), 'single');
                     % v
-                    data_vertices_mat(indVert,8)=typecast(uint8([primCode(cursor+68+(indVert-1)*32+28), primCode(cursor+68+(indVert-1)*32+29), primCode(cursor+68+(indVert-1)*32+30), primCode(cursor+68+(indVert-1)*32+31)]), 'single');
+                    data_vertices_mat(indVert,8)=1-typecast(uint8([primCode(cursor+68+(indVert-1)*32+28), primCode(cursor+68+(indVert-1)*32+29), primCode(cursor+68+(indVert-1)*32+30), primCode(cursor+68+(indVert-1)*32+31)]), 'single');
                     
                 end
 
