@@ -19,21 +19,21 @@ sectionData[
 					xyznuvtb{						### standard model 
 						normal:4					# float *3 (needs conversion)
 						uv:8						# float *2
-						tangent:4					# float
-						binormal:4					# float
+						tangent:4					# float *3 (needs conversion)
+						binormal:4					# float *3 (needs conversion)
 					}
 					xyznuvr{						### wire model
 						normal:12					# float *3
 						u:4						# float
 						v:4						# float
-						r:4						# float
+						radius:4						# float
 					}
 					xyznuviiiwwtb{						### skinned model, i.e. main turret
 						normal:4					# float *3 (needs conversion)
 						uv:8						# float *2
 						iiiww:5						# part indentifier, hex -> string as entity name
-						tangent:4					# float
-						binormal:4					# float
+						tangent:4					# float *3 (needs conversion)
+						binormal:4					# float *3 (needs conversion)
 					}
 				}
 			]

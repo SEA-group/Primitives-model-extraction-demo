@@ -1,4 +1,4 @@
-% version 2020.06.24.a
+% version 2020.06.27.a
 % requires NormalConvertor_Mk2.m
 
 function sectionNameUltimate=PrimitivesReader_Mk4(fileName)
@@ -6,7 +6,7 @@ function sectionNameUltimate=PrimitivesReader_Mk4(fileName)
 %     %% debug attributes bloc
 %     clc
 %     clear
-%     fileName= 'Queue/AAS010_Curtiss_SC1.primitives';
+%     fileName= 'Queue/JSD019_Fubuki_1943_MidBack_lod2.primitives';
     
     %% open file and read in bytes
 
@@ -250,7 +250,7 @@ function sectionNameUltimate=PrimitivesReader_Mk4(fileName)
                     data_vertices_mat(indVert,7)=typecast(uint8([primCode(cursor+68+(indVert-1)*36+24), primCode(cursor+68+(indVert-1)*36+25), primCode(cursor+68+(indVert-1)*36+26), primCode(cursor+68+(indVert-1)*36+27)]), 'single');
                     % v
                     data_vertices_mat(indVert,8)=1-typecast(uint8([primCode(cursor+68+(indVert-1)*36+28), primCode(cursor+68+(indVert-1)*36+29), primCode(cursor+68+(indVert-1)*36+30), primCode(cursor+68+(indVert-1)*36+31)]), 'single');
-                    % r
+                    % radius
                     data_vertices_mat(indVert,9)=typecast(uint8([primCode(cursor+68+(indVert-1)*36+32), primCode(cursor+68+(indVert-1)*36+33), primCode(cursor+68+(indVert-1)*36+34), primCode(cursor+68+(indVert-1)*36+35)]), 'single');
 
                 end
