@@ -26,7 +26,7 @@ sectionData[
 						normal:12					# float *3
 						u:4						# float
 						v:4						# float
-						radius:4						# float
+						radius:4					# float
 					}
 					xyznuviiiwwtb{						### skinned model, i.e. main turret
 						normal:4					# float *3 (needs conversion)
