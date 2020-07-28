@@ -1,12 +1,12 @@
 % version 2020.06.27.a
 % requires NormalConvertor_Mk2.m
 
-function sectionNameUltimate=PrimitivesReader_Mk4(fileName)
+function sectionNameUltimate=PrimitivesReader_Mk5(fileName)
     
 %     %% debug attributes bloc
 %     clc
 %     clear
-%     fileName= 'Queue/JSD019_Fubuki_1943_MidBack_lod2.primitives';
+%     fileName= 'Queue/RRS041_Rif_1_radar.primitives';
     
     %% open file and read in bytes
 
@@ -201,7 +201,7 @@ function sectionNameUltimate=PrimitivesReader_Mk4(fileName)
 
             data_vertices_mat=[];
 
-            if isequal(data_type(1: 8), [120 121 122 110 117 118 116 98]')   % if the type is xyznuvtb (standard model)
+            if isequal(data_type(1: 8), [120 121 122 110 117 118 116 98]')   % if the type is xyznuvtb (standard model) (save in format xyznuv since obj doesn't support tb)
 
                 for indVert=1: data_count
 
@@ -222,15 +222,15 @@ function sectionNameUltimate=PrimitivesReader_Mk4(fileName)
                     % v
                     data_vertices_mat(indVert,8)=1-typecast(uint8([primCode(cursor+68+(indVert-1)*32+20), primCode(cursor+68+(indVert-1)*32+21), primCode(cursor+68+(indVert-1)*32+22), primCode(cursor+68+(indVert-1)*32+23)]), 'single');
                     % tangent
-                    data_vertices_mat(indVert,9)=typecast(uint8([primCode(cursor+68+(indVert-1)*32+24), primCode(cursor+68+(indVert-1)*32+25), primCode(cursor+68+(indVert-1)*32+26), primCode(cursor+68+(indVert-1)*32+27)]), 'single');
+%                     data_vertices_mat(indVert,9)=typecast(uint8([primCode(cursor+68+(indVert-1)*32+24), primCode(cursor+68+(indVert-1)*32+25), primCode(cursor+68+(indVert-1)*32+26), primCode(cursor+68+(indVert-1)*32+27)]), 'single');
                     % binormal
-                    data_vertices_mat(indVert,10)=typecast(uint8([primCode(cursor+68+(indVert-1)*32+28), primCode(cursor+68+(indVert-1)*32+29), primCode(cursor+68+(indVert-1)*32+30), primCode(cursor+68+(indVert-1)*32+31)]), 'single');
+%                     data_vertices_mat(indVert,10)=typecast(uint8([primCode(cursor+68+(indVert-1)*32+28), primCode(cursor+68+(indVert-1)*32+29), primCode(cursor+68+(indVert-1)*32+30), primCode(cursor+68+(indVert-1)*32+31)]), 'single');
 
                 end
 
                 save(['temps/', num2str(indSect), '_vertices_xyznnnuvtb.mat'], 'data_vertices_mat');
 
-            elseif isequal(data_type(1: 7), [120 121 122 110 117 118 114]')   % if the type is xyznuvr (wire model)
+            elseif isequal(data_type(1: 7), [120 121 122 110 117 118 114]')   % if the type is xyznuvr (wire model) (save in format xyznuv since obj doesn't support r)
 
                 for indVert=1: data_count
 
@@ -251,13 +251,13 @@ function sectionNameUltimate=PrimitivesReader_Mk4(fileName)
                     % v
                     data_vertices_mat(indVert,8)=1-typecast(uint8([primCode(cursor+68+(indVert-1)*36+28), primCode(cursor+68+(indVert-1)*36+29), primCode(cursor+68+(indVert-1)*36+30), primCode(cursor+68+(indVert-1)*36+31)]), 'single');
                     % radius
-                    data_vertices_mat(indVert,9)=typecast(uint8([primCode(cursor+68+(indVert-1)*36+32), primCode(cursor+68+(indVert-1)*36+33), primCode(cursor+68+(indVert-1)*36+34), primCode(cursor+68+(indVert-1)*36+35)]), 'single');
+%                     data_vertices_mat(indVert,9)=typecast(uint8([primCode(cursor+68+(indVert-1)*36+32), primCode(cursor+68+(indVert-1)*36+33), primCode(cursor+68+(indVert-1)*36+34), primCode(cursor+68+(indVert-1)*36+35)]), 'single');
 
                 end
 
                 save(['temps/', num2str(indSect), '_vertices_xyznnnuvr.mat'], 'data_vertices_mat');
                 
-            elseif isequal(data_type(1: 13), [120 121 122 110 117 118 105 105 105 119 119 116 98]')   % if the type is xyznuviiiwwtb (skinned model) (treat as xyznuvtbiiiww)
+            elseif isequal(data_type(1: 13), [120 121 122 110 117 118 105 105 105 119 119 116 98]')   % if the type is xyznuviiiwwtb (skinned model) (save in format xyznuviiiww since obj doesn't support tb)
 
                 for indVert=1: data_count
 
@@ -278,21 +278,52 @@ function sectionNameUltimate=PrimitivesReader_Mk4(fileName)
                     % v
                     data_vertices_mat(indVert,8)=1-typecast(uint8([primCode(cursor+68+(indVert-1)*37+20), primCode(cursor+68+(indVert-1)*37+21), primCode(cursor+68+(indVert-1)*37+22), primCode(cursor+68+(indVert-1)*37+23)]), 'single');
                     % tangent
-                    data_vertices_mat(indVert,9)=typecast(uint8([primCode(cursor+68+(indVert-1)*37+29), primCode(cursor+68+(indVert-1)*37+30), primCode(cursor+68+(indVert-1)*37+31), primCode(cursor+68+(indVert-1)*37+32)]), 'single');
+%                     data_vertices_mat(indVert,9)=typecast(uint8([primCode(cursor+68+(indVert-1)*37+29), primCode(cursor+68+(indVert-1)*37+30), primCode(cursor+68+(indVert-1)*37+31), primCode(cursor+68+(indVert-1)*37+32)]), 'single');
                     % binormal
-                    data_vertices_mat(indVert,10)=typecast(uint8([primCode(cursor+68+(indVert-1)*37+33), primCode(cursor+68+(indVert-1)*37+34), primCode(cursor+68+(indVert-1)*37+35), primCode(cursor+68+(indVert-1)*37+36)]), 'single');
+%                     data_vertices_mat(indVert,10)=typecast(uint8([primCode(cursor+68+(indVert-1)*37+33), primCode(cursor+68+(indVert-1)*37+34), primCode(cursor+68+(indVert-1)*37+35), primCode(cursor+68+(indVert-1)*37+36)]), 'single');
                     % iiiww
-                    data_vertices_mat(indVert,11)=primCode(cursor+68+(indVert-1)*37+24);
-                    data_vertices_mat(indVert,12)=primCode(cursor+68+(indVert-1)*37+25);
-                    data_vertices_mat(indVert,13)=primCode(cursor+68+(indVert-1)*37+26);
-                    data_vertices_mat(indVert,14)=primCode(cursor+68+(indVert-1)*37+27);
-                    data_vertices_mat(indVert,15)=primCode(cursor+68+(indVert-1)*37+28);
+                    data_vertices_mat(indVert,9)=primCode(cursor+68+(indVert-1)*37+24);
+                    data_vertices_mat(indVert,10)=primCode(cursor+68+(indVert-1)*37+25);
+                    data_vertices_mat(indVert,11)=primCode(cursor+68+(indVert-1)*37+26);
+                    data_vertices_mat(indVert,12)=primCode(cursor+68+(indVert-1)*37+27);
+                    data_vertices_mat(indVert,13)=primCode(cursor+68+(indVert-1)*37+28);
                     
                 end
 
                 save(['temps/', num2str(indSect), '_vertices_xyznnnuviiiwtb.mat'], 'data_vertices_mat');
                 
-            elseif isequal(data_type(1: 6), [120 121 122 110 117 118]') % if the type is xyznuv (alpha model)
+            elseif isequal(data_type(1: 13), [120 121 122 110 117 118 105 105 105 119 119 0 0]')   % if the type is xyznuviiiww (skinned alpha model) 
+
+                for indVert=1: data_count
+
+                    % x
+                    data_vertices_mat(indVert,1)=typecast(uint8([primCode(cursor+68+(indVert-1)*29), primCode(cursor+68+(indVert-1)*29+1), primCode(cursor+68+(indVert-1)*29+2), primCode(cursor+68+(indVert-1)*29+3)]), 'single');
+                    % y
+                    data_vertices_mat(indVert,2)=typecast(uint8([primCode(cursor+68+(indVert-1)*29+4), primCode(cursor+68+(indVert-1)*29+5), primCode(cursor+68+(indVert-1)*29+6), primCode(cursor+68+(indVert-1)*29+7)]), 'single');
+                    % z
+                    data_vertices_mat(indVert,3)=typecast(uint8([primCode(cursor+68+(indVert-1)*29+8), primCode(cursor+68+(indVert-1)*29+9), primCode(cursor+68+(indVert-1)*29+10), primCode(cursor+68+(indVert-1)*29+11)]), 'single');
+                    % normal, an unsigned integer. will be ensuite converted to 3 floats
+                    normalNum=primCode(cursor+68+(indVert-1)*29+12)+primCode(cursor+68+(indVert-1)*29+13)*256+primCode(cursor+68+(indVert-1)*29+14)*256^2+primCode(cursor+68+(indVert-1)*29+15)*256^3;
+                    normal3=NormalConvertor_Mk2(normalNum);
+                    data_vertices_mat(indVert,4)=normal3(1);
+                    data_vertices_mat(indVert,5)=normal3(2);
+                    data_vertices_mat(indVert,6)=normal3(3);
+                    % u
+                    data_vertices_mat(indVert,7)=typecast(uint8([primCode(cursor+68+(indVert-1)*29+16), primCode(cursor+68+(indVert-1)*29+17), primCode(cursor+68+(indVert-1)*29+18), primCode(cursor+68+(indVert-1)*29+19)]), 'single');
+                    % v
+                    data_vertices_mat(indVert,8)=1-typecast(uint8([primCode(cursor+68+(indVert-1)*29+20), primCode(cursor+68+(indVert-1)*29+21), primCode(cursor+68+(indVert-1)*29+22), primCode(cursor+68+(indVert-1)*29+23)]), 'single');
+                    % iiiww
+                    data_vertices_mat(indVert,9)=primCode(cursor+68+(indVert-1)*29+24);
+                    data_vertices_mat(indVert,10)=primCode(cursor+68+(indVert-1)*29+25);
+                    data_vertices_mat(indVert,11)=primCode(cursor+68+(indVert-1)*29+26);
+                    data_vertices_mat(indVert,12)=primCode(cursor+68+(indVert-1)*29+27);
+                    data_vertices_mat(indVert,13)=primCode(cursor+68+(indVert-1)*29+28);
+                    
+                end
+
+                save(['temps/', num2str(indSect), '_vertices_xyznnnuviiiwtb.mat'], 'data_vertices_mat');
+                
+            elseif isequal(data_type(1: 7), [120 121 122 110 117 118 0]') % if the type is xyznuv (alpha model)
                 
                 for indVert=1: data_count
 

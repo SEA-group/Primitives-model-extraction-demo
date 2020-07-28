@@ -1,8 +1,12 @@
 # Ship model extraction script
 
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/SEA-group/Ship-model-extraction-demo?include_prereleases)
+![GitHub last commit](https://img.shields.io/github/last-commit/SEA-group/Ship-model-extraction-demo)
+![GitHub issues](https://img.shields.io/github/issues-raw/SEA-group/Ship-model-extraction-demo)
+
 By AstreTunes @ SEA group
 
-These Matlab scripts were written to help understanding the file structure of BigWorld *.primitives* files used in World of Warships. My programming skill is not enough to make an appropriate model tool, but I hope this projet could help capable people to get hands on it. （Update 2020/06/27: it's done)
+These Matlab scripts were written to help understanding the file structure of BigWorld *.primitives* files used in World of Warships. My programming skill is not enough to make an appropriate model tool, but I hope this projet could help capable people to get hands on it. （Update 2020/06/27: it's done | Update 2020/07/28: *partially)
 
 **These scripts are now able to extract all models including wire and armor models, *.primitives* to *.obj* only, they can't do the inverse.**
 
