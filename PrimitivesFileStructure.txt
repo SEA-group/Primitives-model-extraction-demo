@@ -35,6 +35,11 @@ sectionData[
 						tangent:4					# float *3 (needs conversion)
 						binormal:4					# float *3 (needs conversion)
 					}
+					xyznuviiiww{						### skinned alpha model, i.e. net parts on mobile radars
+						normal:4					# float *3 (needs conversion)
+						uv:8						# float *2
+						iiiww:5						# part indentifier, hex -> string as entity name
+					}
 				}
 			]
 		}:sectionSize
