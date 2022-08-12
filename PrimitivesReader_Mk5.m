@@ -1,4 +1,4 @@
-% version 2020.06.27.a
+% version 2022.08.12.a
 % requires NormalConvertor_Mk2.m
 
 function sectionNameUltimate=PrimitivesReader_Mk5(fileName)
@@ -229,6 +229,31 @@ function sectionNameUltimate=PrimitivesReader_Mk5(fileName)
                 end
 
                 save(['temps/', num2str(indSect), '_vertices_xyznnnuvtb.mat'], 'data_vertices_mat');
+                
+            elseif isequal(data_type(1: 9), [120 121 122 110 117 118 50 116 98]')   % if the type is xyznuv2tb (shell friction model) (save in format xyznu1v1 since obj doesn't support tb)
+            
+                for indVert = 1: data_count
+
+                    % x, supposed to be signed single precision floating-point, small endian
+                    data_vertices_mat(indVert,1)=typecast(uint8([primCode(cursor+68+(indVert-1)*40), primCode(cursor+68+(indVert-1)*40+1), primCode(cursor+68+(indVert-1)*40+2), primCode(cursor+68+(indVert-1)*40+3)]), 'single');
+                    % y
+                    data_vertices_mat(indVert,2)=typecast(uint8([primCode(cursor+68+(indVert-1)*40+4), primCode(cursor+68+(indVert-1)*40+5), primCode(cursor+68+(indVert-1)*40+6), primCode(cursor+68+(indVert-1)*40+7)]), 'single');
+                    % z
+                    data_vertices_mat(indVert,3)=typecast(uint8([primCode(cursor+68+(indVert-1)*40+8), primCode(cursor+68+(indVert-1)*40+9), primCode(cursor+68+(indVert-1)*40+10), primCode(cursor+68+(indVert-1)*40+11)]), 'single');
+                    % normal, an unsigned integer. will be ensuite converted to 3 floats
+                    normalNum=primCode(cursor+68+(indVert-1)*40+12)+primCode(cursor+68+(indVert-1)*40+13)*256+primCode(cursor+68+(indVert-1)*40+14)*256^2+primCode(cursor+68+(indVert-1)*40+15)*256^3;
+                    normal3=NormalConvertor_Mk2(normalNum);
+                    data_vertices_mat(indVert,4)=normal3(1);
+                    data_vertices_mat(indVert,5)=normal3(2);
+                    data_vertices_mat(indVert,6)=normal3(3);
+                    % u1
+                    data_vertices_mat(indVert,7)=typecast(uint8([primCode(cursor+68+(indVert-1)*40+16), primCode(cursor+68+(indVert-1)*40+17), primCode(cursor+68+(indVert-1)*40+18), primCode(cursor+68+(indVert-1)*40+19)]), 'single');
+                    % v1
+                    data_vertices_mat(indVert,8)=1-typecast(uint8([primCode(cursor+68+(indVert-1)*40+20), primCode(cursor+68+(indVert-1)*40+21), primCode(cursor+68+(indVert-1)*40+22), primCode(cursor+68+(indVert-1)*40+23)]), 'single');
+                    % discard u2 v2 ttt bbb
+                end
+
+                save(['temps/', num2str(indSect), '_vertices_xyznnnuv2tb.mat'], 'data_vertices_mat');
 
             elseif isequal(data_type(1: 7), [120 121 122 110 117 118 114]')   % if the type is xyznuvr (wire model) (save in format xyznuv since obj doesn't support r)
 
@@ -321,7 +346,7 @@ function sectionNameUltimate=PrimitivesReader_Mk5(fileName)
                     
                 end
 
-                save(['temps/', num2str(indSect), '_vertices_xyznnnuviiiwtb.mat'], 'data_vertices_mat');
+                save(['temps/', num2str(indSect), '_vertices_xyznnnuviiiw.mat'], 'data_vertices_mat');
                 
             elseif isequal(data_type(1: 7), [120 121 122 110 117 118 0]') % if the type is xyznuv (alpha model)
                 

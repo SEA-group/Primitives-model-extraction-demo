@@ -10,50 +10,65 @@ sectionData[
 			}
 			vertices[
 				{
-					xyz:12							# float *3
 					xyznuv{							### alpha model, i.e. glass, plane propeller, net
+						xyz:12						# float *3
 						normal:12					# float *3
-						u:4						# float
-						v:4						# float
+						u:4							# float
+						v:4							# float
 					}
 					xyznuvtb{						### standard model 
+						xyz:12						# float *3
 						normal:4					# float *3 (needs conversion)
-						uv:8						# float *2
+						u:4							# float
+						v:4							# float
 						tangent:4					# float *3 (needs conversion)
 						binormal:4					# float *3 (needs conversion)
-					}
+					}:32
+					xyznuv2tb{						### shell friction model
+						xyz:12						# float *3
+						normal:4					# float *3 (needs conversion)
+						uv1:8						# float *2
+						uv2:8						# float *2
+						tangent:4					# float *3 (needs conversion)
+						binormal:4					# float *3 (needs conversion)
+					}:40
 					xyznuvr{						### wire model
+						xyz:12						# float *3
 						normal:12					# float *3
-						u:4						# float
-						v:4						# float
+						u:4							# float
+						v:4							# float
 						radius:4					# float
-					}
-					xyznuviiiwwtb{						### skinned model, i.e. main turret
+					}:36
+					xyznuviiiwwtb{					### skinned model, i.e. main turret
+						xyz:12						# float *3
 						normal:4					# float *3 (needs conversion)
-						uv:8						# float *2
+						u:4							# float
+						v:4							# float
 						iiiww:5						# part indentifier, hex -> string as entity name
 						tangent:4					# float *3 (needs conversion)
 						binormal:4					# float *3 (needs conversion)
-					}
-					xyznuviiiww{						### skinned alpha model, i.e. net parts on mobile radars
+					}:37
+					xyznuviiiww{					### skinned alpha model, i.e. net parts on mobile radars
+						xyz:12						# float *3
 						normal:4					# float *3 (needs conversion)
-						uv:8						# float *2
+						u:4							# float
+						v:4							# float
 						iiiww:5						# part indentifier, hex -> string as entity name
-					}
+					}:29
 				}
 			]
 		}:sectionSize
 		data(Indices){
 			type:64									# string
 			count:4									# uint32
-			groupCount:4								# uint32
+			groupCount:4							# uint32
 			indices[
-				list{								# exists only when type==list
+				list{								### when type==list16
 					i3:2							# uint16
 					i2:2							# uint16
 					i1:2							# uint16
 				}
-				list32{								# exists only when type==list32
+				list32{								### when type==list32
 					i3:4							# uint32
 					i2:4							# uint32
 					i1:4							# uint32
@@ -61,10 +76,10 @@ sectionData[
 			]
 			groups[
 				{
-					startIndex:4						# uint32
-					trianglesCount:4					# uint32
-					startVertex:4						# uint32
-					verticesCount:4						# uint32
+					startIndex:4					# uint32
+					trianglesCount:4				# uint32
+					startVertex:4					# uint32
+					verticesCount:4					# uint32
 				}
 			]
 		}:sectionSize
@@ -86,10 +101,10 @@ sectionData[
 ]:sum(sectionSize)
 sectionNames[
 	{
-		sectionSize:4									# uint32
+		sectionSize:4								# uint32
 		unknown(0):16								
-		sectionNameLength:4								# uint32
-		sectionName:sectionNameLength							# string
+		sectionNameLength:4							# uint32
+		sectionName:sectionNameLength				# string
 	}
 ]:sectionNameLength
-sectionNameLength:4										# uint32
+sectionNameLength:4									# uint32
